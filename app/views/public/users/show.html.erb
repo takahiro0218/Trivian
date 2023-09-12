@@ -1,2 +1,26 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto border-bottom">
+      <table class="table table-borderless">
+        <tr>
+          <td><%= image_tag current_user.get_user_image(100,100) %></td>
+          <td><%= current_user.name %></td>
+          <td>
+            プロフィール
+            <% if current_user.profile.present? %>
+              <%= current_user.profile %>
+            <% else %>
+              <p>プロフィールはまだありません。</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <!--フォロー数-->
+      <!--フォロワー数-->
+      <div class="text-center mb-3">
+        <%= link_to "ユーザー情報を編集する", edit_user_path(current_user.id), class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!--投稿一覧のレンダー-->

@@ -23,10 +23,14 @@ Rails.application.routes.draw do
       collection do
         get "check"
       end
-    resources :posts, only: [:new, :show, :create, :destroy]
+    end
+    resources :posts, only: [:new, :show, :create, :destroy] do
+      collection do
+        get "ranking"
+      end
+    end
     resources :post_likes, only: [:index, :create, :destroy]
     resources :post_comments, only: [:create, :destroy]
-    end
   end
   
   # 管理者側ルーティング
@@ -40,5 +44,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destory]
     resources :categories, only: [:index, :create, :edit, :update]
   end
+  
+  # 検索用ルーティング
+  get "search" => "searches#search"
   
 end
