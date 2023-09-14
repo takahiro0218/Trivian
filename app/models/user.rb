@@ -12,7 +12,8 @@ class User < ApplicationRecord
   # バリデーション
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :profile, length: { minimum: 1, maximum: 100 }
+  # 新規登録で引っかかる
+  # validates :profile, length: { minimum: 1, maximum: 100 }
   
   # 画像の添付
   has_one_attached :user_image

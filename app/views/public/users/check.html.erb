@@ -1,2 +1,20 @@
-<h1>Public::Users#check</h1>
-<p>Find me in app/views/public/users/check.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <h1 class="text-center mt-5">本当にアカウントを削除しますか？</h1>
+      <h4 class="text-center mt-5">
+        <br>
+        削除するを押すと<br>
+        <br>
+        アカウントの情報やこれまでの投稿などが全て<br>
+        <br>
+        削除されてしまいます。<br>
+        <br>
+      </h4>
+      <div class="text-center">
+        <%= link_to "削除する", user_path(@user.id), method: :delete, class: "btn btn-danger mt-2 mx-3" %>
+        <%= link_to "削除しない", user_path(@user.id), class: "btn btn-info mt-2 mx-3" %>
+      </div>
+    </div>
+  </div>
+</div>
