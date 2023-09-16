@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   
   def new
     @post = Post.new
+    @category = Category.all
   end
 
   def show
@@ -9,10 +10,12 @@ class Public::PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    if @post.save
+    # !つけたらエラーになるけどなんで？
+    if @post.save!
       flash[:notice] = "投稿しました"
       redirect_to root_path
     else
+      @category = Category.all
       render :new
     end
   end
@@ -20,11 +23,10 @@ class Public::PostsController < ApplicationController
   def destory
   end
   
-  
   private
   
   def post_params
-    params.require(:post).permit(:post_image, :text)
+    params.require(:post).permit(:user_id, :text, :post_image, :category_id)
   end
   
 end

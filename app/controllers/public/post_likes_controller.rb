@@ -1,4 +1,4 @@
-class Public::PostLiksController < ApplicationController
+class Public::PostLikesController < ApplicationController
   
   def index
   end

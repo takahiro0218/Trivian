@@ -1,2 +1,52 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto border-bottom">
+      <h3>【ユーザー詳細】</h3>
+      <table class="table table-borderless">
+        <tr>
+          <td><%= image_tag @user.get_user_image(100,100) %></td>
+          <td><%= @user.name %></td>
+          <td>
+            プロフィール
+            <% if @user.profile.present? %>
+              <%= @user.profile %>
+            <% else %>
+              <p>プロフィールはまだありません。</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      
+      <div class= "text-center" >
+        <table class="table table-borderless">
+          <tr>
+            <td>ユーザーID</td>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <td>ユーザーネーム</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>ユーザーステータス</td>
+            <td>
+              <% if @user.user_status == false %>
+                <span class="text-success">通常</span>
+              <% else %>
+                <span class="text-danger">停止</span>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div class="text-center mb-3">
+        <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-warning" %>
+        <br>
+        <!--このユーザーの投稿一覧ボタン＝＞検索結果と同じ画面-->
+      </div>

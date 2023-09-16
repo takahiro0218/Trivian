@@ -4,7 +4,7 @@
       <h3>【投稿する】</h3>
       <%= render "layouts/errors", model: @post %>
       <%= form_with model: @post do |f| %>
-        <%= f.hidden_field :user, :value => current_user %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
         <div class="form-group">
           <label for="inputImage">画像を選択</label>
           <%= f.file_field :post_image, accept: "image/*", class: "form-control-file post_image" %>
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
           <%= f.label :category_id, "ジャンル" %>
-          <%= f.collection_select :category_id, categories, :id, :name, include_blank: "--選択してください--" %>
+          <%= f.collection_select :category_id, @category, :id, :name, include_blank: "--選択してください--" %>
         </div>
         <div class="form-group">
           <%= f.submit "投稿する", class: "btn btn-secondary" %>
