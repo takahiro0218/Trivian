@@ -1,2 +1,42 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <h3>【ユーザー編集】</h3>
+      <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+        <table class="table table-borderless text-center">
+          <tr>
+            <td><%= f.label :id, "ユーザーID" %></td>
+            <td><%= f.text_field :id %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :name, "ユーザーネーム" %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :email, "メールアドレス" %></td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :user_status, "ユーザーステータス" %></td>
+            <td>
+              <%= f.radio_button :user_status, false %><%= f.label :通常 %>
+              <%= f.radio_button :user_status, true %><%= f.label :停止 %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.label :user_image, "ユーザー写真" %></td>
+            <td><%= image_tag @user.get_user_image(100,100) %></td>
+            <td><%= f.file_field :user_image %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :profile, "プロフィール" %></td>
+            <td><%= f.text_field :profile %></td>
+          </tr>
+        </table>
+        <div class="text-center">
+          <%= f.submit "変更を保存する", class: "btn btn-warning" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ class Admin::PostsController < ApplicationController
   end
   
   def destroy
+  end
     
   
 end
