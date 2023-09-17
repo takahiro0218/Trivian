@@ -1,0 +1,36 @@
+<table class="table table-borderless">
+  <tr>
+    <td>
+      <%= link_to user_path(post.user.id) do %>
+        <%= image_tag post.user.get_user_image(100,100) %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to user_path(post.user.id) do %>
+        <%= current_user.name %>
+      <% end %>
+    </td>
+    <td></td>
+  </tr>
+</table>
+<table class="table table-borderless">
+  <tr>
+    <td>
+      <%= link_to post_path(post.id) do %>
+        <%= image_tag post.get_post_image(300,300), size: "330x250" %>
+      <% end %>
+    </td>
+    <td class="border">
+      <%= link_to post_path(post.id) do %>
+        <%= post.text %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<div class="text-right">
+  <div class="d-inline-flex">
+      <div class="mt-2">ジャンル:<%= post.category.name %></div>
+      <div class="mt-1 ml-2"><span class="btn btn-light rounded-pill border">へぇ〜</span>:<%= post.post_likes.count %>件</div>
+      <div class="mt-2 ml-2">コメント:<%= post.post_comments.count %>件</div>
+  </div>
+</div>

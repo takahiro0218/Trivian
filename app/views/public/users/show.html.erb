@@ -3,23 +3,40 @@
     <div class="col-lg-10 mx-auto border-bottom">
       <table class="table table-borderless">
         <tr>
-          <td><%= image_tag current_user.get_user_image(100,100) %></td>
-          <td><%= current_user.name %></td>
+          <td><%= image_tag @user.get_user_image(100,100) %></td>
+          <td><%= @user.name %></td>
           <td>
             プロフィール
-            <% if current_user.profile.present? %>
-              <%= current_user.profile %>
+            <% if @user.profile.present? %>
+              <%= @user.profile %>
             <% else %>
               <p>プロフィールはまだありません。</p>
             <% end %>
           </td>
         </tr>
       </table>
-      <!--フォロー数-->
-      <!--フォロワー数-->
-      <div class="text-center mb-3">
-        <%= link_to "ユーザー情報を編集する", edit_user_path(current_user.id), class: "btn btn-success" %>
+      <%= render "public/relationships/follow_btn", user: @user %>
+      <div class="mt-3">
+        <%= link_to user_followings_path(@user.id) do %>
+          フォロー数: <%= @user.followings.count %>
+        <% end %>
       </div>
+      <div class="mt-1">
+        <%= link_to user_followers_path(@user.id) do %>
+          フォロワー数: <%= @user.followers.count %>
+        <% end %>
+      </div>
+      <div class="text-center mb-3">
+        <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), class: "btn btn-success" %>
+      </div>
+      
+      <div class="border my-3"></div>
+      
+      <h4>【投稿一覧（<%= @posts.count %>件）】</h4>
+      <% @posts.each do |post| %>
+        <%= render "public/posts/post", post: post %>
+        <div class="border my-3"></div>
+      <% end %>
     </div>
   </div>
 </div>

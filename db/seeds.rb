@@ -16,3 +16,9 @@ User.create!(
   email: 'ashitaka1259@gmail.com',
   password: '111111'
   )
+
+User.create!(
+  name: 'あし',
+  email: 'ashitaka1250@gmail.com',
+  password: '111111'
+  )

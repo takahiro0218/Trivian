@@ -23,14 +23,17 @@ Rails.application.routes.draw do
       collection do
         get "check"
       end
+      resources :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
     resources :posts, only: [:new, :show, :create, :destroy] do
       collection do
         get "ranking"
+        resources :post_likes, only: [:index, :create, :destroy]
       end
+        resources :post_comments, only: [:create, :destroy]
     end
-    resources :post_likes, only: [:index, :create, :destroy]
-    resources :post_comments, only: [:create, :destroy]
   end
 
   # 管理者側ルーティング
