@@ -25,6 +25,10 @@ class Public::PostsController < ApplicationController
   def destory
   end
   
+  def ranking
+    @posts = Post.find(PostLike.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
+  end
+  
   private
   
   def post_params

@@ -1,12 +1,12 @@
 class Public::UsersController < ApplicationController
   
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @posts = @user.posts
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def check
@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
   end
   
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else
@@ -30,6 +30,12 @@ class Public::UsersController < ApplicationController
     else
       redirect_to request.referer
     end
+  end
+  
+  def post_likes
+    @user = User.find(params[:id])
+    post_likes= PostLike.where(user_id: @user.id).pluck(:post_id)
+    @post_like_posts = Post.find(post_likes)
   end
   
   

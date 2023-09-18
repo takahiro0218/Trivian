@@ -22,4 +22,14 @@ class Post < ApplicationRecord
     post_image.variant(resize_to_limit: [width, height]).processed
   end
   
+  # いいねしているかどうかの判別
+  def post_liked_by?(user)
+   post_likes.exists?(user_id: user.id)
+  end
+  
+  # 部分一致検索の条件
+  def self.partial_search(word)
+    where("text LIKE?", '%'+word+'%')
+  end
+  
 end

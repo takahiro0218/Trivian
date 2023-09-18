@@ -7,7 +7,7 @@
     </td>
     <td>
       <%= link_to user_path(post.user.id) do %>
-        <%= current_user.name %>
+        <%= post.user.name %>
       <% end %>
     </td>
     <td></td>
@@ -29,8 +29,8 @@
 </table>
 <div class="text-right">
   <div class="d-inline-flex">
-      <div class="mt-2">ジャンル:<%= post.category.name %></div>
-      <div class="mt-1 ml-2"><span class="btn btn-light rounded-pill border">へぇ〜</span>:<%= post.post_likes.count %>件</div>
-      <div class="mt-2 ml-2">コメント:<%= post.post_comments.count %>件</div>
+    <div class="mt-2">ジャンル:<%= post.category.name %></div>
+    <div class="mt-1 ml-2"><%= render "public/post_likes/post_like_btn", post: post %>:<%= post.post_likes.count %>件</div>
+    <div class="mt-2 ml-2">コメント:<%= post.post_comments.count %>件</div>
   </div>
 </div>

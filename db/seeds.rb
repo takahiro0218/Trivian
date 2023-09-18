@@ -22,3 +22,39 @@ User.create!(
   email: 'ashitaka1250@gmail.com',
   password: '111111'
   )
+  
+Category.create!(
+  name: '歴史'
+  )
+  
+Category.create!(
+  name: '家事'
+  )
+  
+Category.create!(
+  name: '動物'
+  )
+  
+Category.create!(
+  name: '洗濯'
+  )
+  
+Category.create!(
+  name: '料理'
+  )
+  
+Category.create!(
+  name: 'DIY'
+  )
+  
+Category.create!(
+  name: '釣り'
+  )
+  
+Category.create!(
+  name: 'スキー'
+  )
+  
+Category.create!(
+  name: 'その他'
+  )

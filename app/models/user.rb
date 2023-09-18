@@ -44,4 +44,10 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  # 部分一致検索の条件
+  def self.partial_search(word)
+    where("name LIKE?", '%'+word+'%')
+  end
+  
 end

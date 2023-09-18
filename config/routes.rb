@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "about" => "homes#about"
     resources :users, only: [:show, :edit, :update, :destroy] do
+      member do
+        get "post_likes"
+      end
       collection do
         get "check"
       end
@@ -30,8 +33,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :show, :create, :destroy] do
       collection do
         get "ranking"
-        resources :post_likes, only: [:index, :create, :destroy]
       end
+        resource :post_likes, only: [:create, :destroy]
         resources :post_comments, only: [:create, :destroy]
     end
   end
@@ -55,5 +58,6 @@ Rails.application.routes.draw do
 
   # 検索用ルーティング
   get "search" => "searches#search"
+  get "search_result" => "searches#search_result"
 
 end
