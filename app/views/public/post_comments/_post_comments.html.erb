@@ -1,0 +1,27 @@
+<% post.post_comments.each do |post_comment| %>
+  <table class="table table-borderless">
+    <tr>
+      <td>
+        <%= link_to user_path(post_comment.user.id) do %>
+          <%= image_tag post_comment.user.get_user_image(100,100) %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to user_path(post_comment.user.id) do %>
+          <%= post_comment.user.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to user_path(post_comment.user.id) do %>
+          <%= post_comment.comment %>
+        <% end %>
+      </td>
+      <td>
+        <% if post_comment.user == current_user %>
+          <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  <div class="border my-3"></div>
+<% end %>

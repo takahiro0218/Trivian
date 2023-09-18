@@ -1,1 +1,22 @@
-検索ページ
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <h4>【検索】</h4>
+      <div class="mt-5 mb-3">キーワード検索</div>
+      <div class="search_form mt-2">
+        <%= form_with url: search_result_path, local: true, method: :get do |f| %>
+          <%= f.text_field :word %>
+          <%= f.select :range, options_for_select([['ユーザー名'], ['投稿']]) %>
+          <%= f.hidden_field :method, value: "partial" %>
+          <%= f.submit "検索", class: "btn-sm btn-light border" %>
+        <% end %>
+      </div>
+      <div class="mt-5 mb-3">ジャンル検索</div>
+      <% @categories.each do |category| %>
+        <%= link_to root_path(category_id: category.id), class: "btn btn-light border mt-2" do %>
+          <%= category.name %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

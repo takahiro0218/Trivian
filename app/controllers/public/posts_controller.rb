@@ -6,6 +6,8 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @post_comment = PostComment.new
   end
   
   def create
@@ -21,6 +23,10 @@ class Public::PostsController < ApplicationController
   end
   
   def destory
+  end
+  
+  def ranking
+    @posts = Post.find(PostLike.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
   end
   
   private
