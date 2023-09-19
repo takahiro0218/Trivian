@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
   def search_result
     @word = params[:word]
     @range = params[:range]
-    if @range == "User"
+    if @range == "ユーザー名"
       @results = User.partial_search(@word)
     else
       @results = Post.partial_search(@word)

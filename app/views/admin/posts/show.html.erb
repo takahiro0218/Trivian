@@ -1,2 +1,10 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <%= render "public/posts/post", post: @post %>
+      <div class="border my-3"></div>
+      <h4>【コメント】</h4>
+      <%= render "public/post_comments/post_comments", post: @post %>
+    </div>
+  </div>
+</div>
