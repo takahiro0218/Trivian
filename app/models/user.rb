@@ -17,8 +17,7 @@ class User < ApplicationRecord
   # バリデーション
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  # 新規登録で引っかかる
-  # validates :profile, length: { minimum: 1, maximum: 100 }
+  validates :profile, length: { maximum: 100 }
 
   # 画像の添付
   has_one_attached :user_image
@@ -49,5 +48,14 @@ class User < ApplicationRecord
   def self.partial_search(word)
     where("name LIKE?", '%'+word+'%')
   end
+  
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲスト"
+    end
+  end
+
   
 end
