@@ -47,7 +47,7 @@ Rails.application.routes.draw do
         patch "ban"
       end
     end
-    resources :posts, only: [:index, :show, :destory]
+    resources :posts, only: [:index, :show, :destroy]
     resources :categories, only: [:index, :create] do
       collection do
         get "edit"
@@ -61,3 +61,7 @@ Rails.application.routes.draw do
   get "search_result" => "searches#search_result"
 
 end
+
+# ー明日やることー
+# ・ゲストログイン
+# ・テストデプロイ

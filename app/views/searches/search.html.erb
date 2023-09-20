@@ -13,8 +13,14 @@
       </div>
       <div class="mt-5 mb-3">ジャンル検索</div>
       <% @categories.each do |category| %>
-        <%= link_to root_path(category_id: category.id), class: "btn btn-light border mt-2" do %>
-          <%= category.name %>
+        <% if user_signed_in? %>
+          <%= link_to root_path(category_id: category.id), class: "btn btn-light border mt-2" do %>
+            <%= category.name %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_posts_path(category_id: category.id), class: "btn btn-light border mt-2" do %>
+            <%= category.name %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
