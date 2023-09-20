@@ -1,27 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col my-5">
+    <div class="col-md-10 mx-auto">
       <h5 class="bg-light col-3 mb-3">管理者ログイン</h5>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
         </div>
       
         <div class="field">
           <%= f.label :password, "パスワード" %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上" %>
         </div>
-      
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end %>
-      
-        <div class="actions">
-          <%= f.submit "Log in" %>
+
+        <div class="actions mt-3">
+          <%= f.submit "ログイン", class: "btn btn-secondary" %>
         </div>
       <% end %>
       

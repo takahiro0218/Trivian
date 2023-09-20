@@ -5,8 +5,8 @@
       <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
         <table class="table table-borderless text-center">
           <tr>
-            <td><%= f.label :id, "ユーザーID" %></td>
-            <td><%= f.text_field :id %></td>
+            <td>ユーザーID</td>
+            <td><%= @user.id %></td>
           </tr>
           <tr>
             <td><%= f.label :name, "ユーザーネーム" %></td>
