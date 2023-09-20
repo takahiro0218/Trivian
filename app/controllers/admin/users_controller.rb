@@ -17,20 +17,21 @@ class Admin::UsersController < ApplicationController
     end
   end
   
-  def ban
-    @user = User.find(params[:id])
-    if @user.update(user_status: true)
-      reset_session
-      flash[:notice] = "アカウントを停止しました"
-      redirect_to admin_user_path(@user.id)
-    end
-  end
+  # 必要ないかも
+  # def ban
+  #   @user = User.find(params[:user_id])
+  #   if @user.update(user_status: true)
+  #     reset_session
+  #     flash[:notice] = "アカウントを停止しました"
+  #     redirect_to admin_user_path(@user.id)
+  #   end
+  # end
   
   
   private
   
   def user_params
-    params.require(:user).permit(:id, :name, :email, :user_image, :profile)
+    params.require(:user).permit(:id, :name, :email, :user_status, :user_image, :profile)
   end
   
 end

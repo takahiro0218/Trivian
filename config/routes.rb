@@ -63,6 +63,5 @@ Rails.application.routes.draw do
 end
 
 # ー明日やることー
-# ・admin側のユーザーステータスの変更機能
 # ・ゲストログイン
 # ・テストデプロイ
