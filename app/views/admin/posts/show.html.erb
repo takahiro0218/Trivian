@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <%= render "public/posts/post", post: @post %>
+      <div class="border my-3"></div>
+      <h4>【コメント】</h4>
+      <%= render "public/post_comments/post_comments", post: @post %>
+    </div>
+  </div>
+</div>

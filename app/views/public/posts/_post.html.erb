@@ -1,0 +1,71 @@
+<table class="table table-borderless">
+  <tr>
+    <td>
+      <% if user_signed_in? %>
+        <%= link_to user_path(post.user.id) do %>
+          <%= image_tag post.user.get_user_image(100,100) %>
+        <% end %>
+      <% else %>
+        <%= link_to admin_user_path(post.user.id) do %>
+          <%= image_tag post.user.get_user_image(100,100) %>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% if user_signed_in? %>
+        <%= link_to user_path(post.user.id) do %>
+          <%= post.user.name %>
+        <% end %>
+      <% else %>
+        <%= link_to admin_user_path(post.user.id) do %>
+          <%= post.user.name %>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% if admin_signed_in? %>
+        <%= link_to "投稿を削除する", post_path(post.id), method: :delete, data: { confirm: "本当に投稿を削除しますか？" }, class: "btn btn-danger" %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<table class="table table-borderless">
+  <tr>
+    <td>
+      <% if user_signed_in? %>
+        <%= link_to post_path(post.id) do %>
+          <%= image_tag post.get_post_image(300,300), size: "330x250" %>
+        <% end %>
+      <% else %>
+        <%= link_to admin_post_path(post.id) do %>
+          <%= image_tag post.get_post_image(300,300), size: "330x250" %>
+        <% end %>
+      <% end %>
+    </td>
+    <td class="border">
+      <% if user_signed_in? %>
+        <%= link_to post_path(post.id) do %>
+          <%= post.text %>
+        <% end %>
+      <% else %>
+        <%= link_to admin_post_path(post.id) do %>
+          <%= post.text %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<div class="text-right">
+  <div class="d-inline-flex">
+    <div class="mt-2">ジャンル:<%= post.category.name %></div>
+    <div class="mt-1 ml-2">
+      <% if user_signed_in? %>
+        <%= render "public/post_likes/post_like_btn", post: post %>
+      <% else %>
+        <span class="btn btn-sm btn-light rounded-pill border">へぇ〜</span>
+      <% end %>
+      :<%= post.post_likes.count %>件
+    </div>
+    <div class="mt-2 ml-2">コメント:<%= post.post_comments.count %>件</div>
+  </div>
+</div>

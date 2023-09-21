@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+       "<%= @word %>"の検索結果（<%= @results.count %> 件）
+      <% if @results.present? %>
+        <% if @range == "ユーザー名" %>
+          <% @results.each do |result| %>
+            <table class="table table-borderless">
+              <tr>
+                <td>
+                  <% if user_signed_in? %>
+                    <%= link_to user_path(result.id) do %>
+                      <%= image_tag result.get_user_image(100,100) %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to admin_user_path(result.id) do %>
+                      <%= image_tag result.get_user_image(100,100) %>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if user_signed_in? %>
+                    <%= link_to user_path(result.id) do %>
+                      <%= result.name %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to admin_user_path(result.id) do %>
+                      <%= result.name %>
+                    <% end %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if user_signed_in? %>
+                    <%= link_to user_path(result.id) do %>
+                      <% if result.profile.present? %>
+                        <%= result.profile %>
+                      <% else %>
+                        <p>プロフィールはまだありません。</p>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to admin_user_path(result.id) do %>
+                      <% if result.profile.present? %>
+                        <%= result.profile %>
+                      <% else %>
+                        <p>プロフィールはまだありません。</p>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+            <div class="border my-3"></div>
+          <% end %>
+        <% else %>
+          <% @results.each do |result| %>
+            <div class="col-sm-3 mt-3 px-1">
+              <% if user_signed_in? %>
+                <%= link_to post_path(result.id), class: "card h-100 w-70" do %>
+                  <div class="card-body">
+                    <table class="table table-borderless">
+                      <tr>
+                        <td><%= image_tag result.user.get_user_image(100,100), size: "100x100", class: "rounded border" %></td>
+                        <td><%= result.user.name %></td>
+                      </tr>
+                    </table>
+                    <div class="card-text">
+                      <h6 class="border p-md-1">
+                        <%= truncate(result.text, length: 32) %>
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">ジャンル:<%= result.category.name %></li>
+                      <li class="list-group-item">
+                        <% if result.post_liked_by?(current_user) %>
+                          <span class="btn btn-sm btn-light rounded-pill border">へぇ〜済</span>
+                        <% else %>
+                          <span class="btn btn-sm btn-light rounded-pill border">へぇ〜</span>
+                        <% end %>
+                        :<%= result.post_likes.count %>件
+                      </li>
+                      <li class="list-group-item">コメント:<%= result.post_comments.count %>件</li>
+                    </ul>
+                  </div>
+                <% end %>
+              <% else %>
+                <%= link_to admin_post_path(result.id), class: "card h-100 w-70" do %>
+                  <div class="card-body">
+                    <table class="table table-borderless">
+                      <tr>
+                        <td><%= image_tag result.user.get_user_image(100,100), size: "100x100", class: "rounded border" %></td>
+                        <td><%= result.user.name %></td>
+                      </tr>
+                    </table>
+                    <div class="card-text">
+                      <h6 class="border p-md-1">
+                        <%= truncate(result.text, length: 32) %>
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">ジャンル:<%= result.category.name %></li>
+                      <li class="list-group-item">
+                        <span class="btn btn-sm btn-light rounded-pill border">へぇ〜</span>:<%= result.post_likes.count %>件
+                      </li>
+                      <li class="list-group-item">コメント:<%= result.post_comments.count %>件</li>
+                    </ul>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <% if @range == "ユーザー名" %>
+          <div>該当するユーザーはいません。</div>
+        <% else %>
+          <div>該当する投稿はありません。</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

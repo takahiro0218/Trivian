@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <h3>【ユーザー一覧】</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-light">
+            <th>ユーザーID</th>
+            <th>ユーザーネーム</th>
+            <th>メールアドレス</th>
+            <th>ユーザーステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to user.name, admin_user_path(user.id) %></td>
+              <td><%= user.email %></td>
+              <td>
+                <% if user.user_status == false %>
+                  <span class="text-success">通常</span>
+                <% else %>
+                  <span class="text-danger">停止</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      
+    </div>
+  </div>
+</div>

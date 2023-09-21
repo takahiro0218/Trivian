@@ -1,0 +1,49 @@
+<% post.post_comments.each do |post_comment| %>
+  <table class="table table-borderless">
+    <tr>
+      <td>
+        <% if user_signed_in? %>
+          <%= link_to user_path(post_comment.user.id) do %>
+            <%= image_tag post_comment.user.get_user_image(100,100) %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_user_path(post_comment.user.id) do %>
+            <%= image_tag post_comment.user.get_user_image(100,100) %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if user_signed_in? %>
+          <%= link_to user_path(post_comment.user.id) do %>
+            <%= post_comment.user.name %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_user_path(post_comment.user.id) do %>
+            <%= post_comment.user.name %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if user_signed_in? %>
+          <%= link_to user_path(post_comment.user.id) do %>
+            <%= post_comment.comment %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_user_path(post_comment.user.id) do %>
+            <%= post_comment.comment %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if user_signed_in? %>
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: "btn btn-danger" %>
+          <% end %>
+        <% else %>
+          <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, data: { confirm: "本当にコメントを削除しますか？" }, class: "btn btn-danger" %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  <div class="border my-3"></div>
+<% end %>

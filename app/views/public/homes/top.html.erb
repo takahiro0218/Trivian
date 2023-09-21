@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <% if params[:category_id] %>
+        "<%= @category.name %>"の検索結果（<%= @category_posts.count %> 件）
+        <% @category_posts.each do |post| %>
+          <%= render "public/posts/post", post: post %>
+          <div class="border my-3"></div>
+        <% end %>
+      <% else %>
+        <% @posts.each do |post| %>
+          <%= render "public/posts/post", post: post %>
+          <div class="border my-3"></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

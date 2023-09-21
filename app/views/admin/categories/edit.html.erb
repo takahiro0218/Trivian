@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+
+      <h4>【ジャンル編集】</h4>
+      <%= form_with model: @categories, url: update_admin_categories_path, method: :patch do |f| %>
+        <% @categories.each_with_index do |category, i| %>
+          <span class="btn btn-light border mt-2">
+            <%= f.text_field "name_#{i}".to_sym, value: category.name %>
+          </span>
+        <% end %>
+        <div class="text-center">
+          <%= f.submit "編集を保存する", class: "btn btn-success mt-5" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

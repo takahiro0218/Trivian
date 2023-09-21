@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <h4>【ランキング】</h4>
+      <% @posts.each.with_index(1) do |post, i| %>
+        <% if i == 1 %>
+          <h4 class=" col-1 border rounded text-center bg-warning">
+            <%= i %>位
+          </h4>
+        <% elsif i == 2 %>
+          <h4 class=" col-1 border rounded text-center bg-secondary">
+            <%= i %>位
+          </h4>
+        <% elsif i == 3 %>
+          <h4 class=" col-1 border rounded text-center bg-success">
+            <%= i %>位
+          </h4>
+        <% else %>
+          <h4 class=" col-1 border rounded text-center bg-light">
+            <%= i %>位
+          </h4>
+        <% end %>
+        <%= render "public/posts/post", post: post %>
+        <div class="border my-3"></div>
+      <% end %>
+    </div>
+  </div>
+</div>
