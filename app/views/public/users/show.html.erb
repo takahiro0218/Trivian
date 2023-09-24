@@ -30,17 +30,23 @@
       </div>
       <% if @user == current_user %>
         <div class="text-center mb-3">
-          <%= link_to "ユーザー情報を編集する", edit_user_registration_path, class: "btn btn-success" %>
+          <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), class: "btn btn-success" %>
         </div>
       <% end %>
       
       <div class="border my-3"></div>
       
-      <h4>【投稿一覧（<%= @posts.count %>件）】</h4>
+      <h4>
+        【投稿一覧】
+        <% if @posts.exists? %>
+          （全<%= @posts.total_count %>件中<%= @posts.offset_value + 1 %>〜<%= @posts.offset_value + @posts.length %>件を表示しています。）
+        <% end %>
+      </h4>
       <% @posts.each do |post| %>
         <%= render "public/posts/post", post: post %>
         <div class="border my-3"></div>
       <% end %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

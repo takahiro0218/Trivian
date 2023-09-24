@@ -1,2 +1,19 @@
 // bootstrapの記述
 @use '~bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
+
+body {
+  background-color: #f6efe5;
+  font-family: 'Cherry Swash', cursive;
+}
+
+.link {
+  color: #000000;
+  font-family: 'Cherry Swash', cursive;
+}
+
+.link:hover {
+  color: #AAAAAA;
+  text-decoration: none;
+}

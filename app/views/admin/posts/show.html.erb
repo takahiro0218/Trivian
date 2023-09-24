@@ -4,7 +4,8 @@
       <%= render "public/posts/post", post: @post %>
       <div class="border my-3"></div>
       <h4>【コメント】</h4>
-      <%= render "public/post_comments/post_comments", post: @post %>
+      <%= render "public/post_comments/post_comments", post_comments: @post_comments %>
+      <%= paginate @post_comments %>
     </div>
   </div>
 </div>

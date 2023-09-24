@@ -11,8 +11,6 @@ class Post < ApplicationRecord
   
   # バリデーション
   validates :text, presence: true
-  validates :post_image, presence: true
-  validates :category, presence: true
   
   # 画像のリサイズ
   def get_post_image(width,height)

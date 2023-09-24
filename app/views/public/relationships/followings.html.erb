@@ -3,6 +3,7 @@
     <div class="col-lg-10 mx-auto">
       <h4>【フォロー一覧】</h4>
       <%= render "follow_lists", users: @users %>
+      <%= paginate @users %>
     </div>
   </div>
 </div>

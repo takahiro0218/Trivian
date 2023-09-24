@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 mx-auto">
+      <%= render "layouts/errors", model: @post_comment %>
       <%= render "post", post: @post %>
       <div class="border my-3"></div>
       <h4>【コメント】</h4>
       <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
-      <%= render "public/post_comments/post_comments", post: @post %>
+      <%= render "public/post_comments/post_comments", post_comments: @post_comments %>
+      <%= paginate @post_comments %>
     </div>
   </div>
 </div>
