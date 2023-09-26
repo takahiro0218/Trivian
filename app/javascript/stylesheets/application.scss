@@ -4,8 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
 
 body {
-  background-color: #f6efe5;
+  // background-color: #f6efe5;
   font-family: 'Cherry Swash', cursive;
+}
+
+.heading {
+  background-color: rgba(182, 167, 159, 0.25);;
 }
 
 .link {
@@ -16,4 +20,15 @@ body {
 .link:hover {
   color: #AAAAAA;
   text-decoration: none;
+}
+
+.btn {
+  text-color: #000000;
+  background-color: rgb(207, 219, 218);
+}
+
+.about {
+  background-image: url("<%= asset_path('12230_color.jpg') %>")
+  height: 800px;
+  background-size:cover;
 }

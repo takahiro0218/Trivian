@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 mx-auto">
-      <h5 class="bg-light col-2 mt-5 mb-2">ログイン</h5>
-      <h6 class="bg-light col-5 my-3">ユーザー登録済みの方はこちらからログイン</h6>
+      <h5 class="heading col-2 mt-5 mb-2">ログイン</h5>
+      <h6 class="heading col-5 my-3">ユーザー登録済みの方はこちらからログイン</h6>
       <div class="offset-md-1">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <table class="table table-borderless">
@@ -16,19 +16,20 @@
             </tr>
             <tr>
             <tr>
-              <td><%= f.submit "ログイン", class: "btn btn-secondary" %></td>
+              <td></td>
+              <td><%= f.submit "ログイン", class: "btn" %></td>
             </tr>
           </table>
         <% end %>
       </div>
-      <h6 class="bg-light col-4 mt-5 mb-3">ユーザー登録がお済みでない方</h6>
+      <h6 class="heading col-4 mt-5 mb-3">ユーザー登録がお済みでない方</h6>
       <div class="offset-md-1">
         <%= render "public/shared/links" %>から新規登録してください。
       </div>
 
-      <h6 class="bg-light col-2 mt-5 mb-3">ゲストログイン</h6>
+      <h6 class="heading col-2 mt-5 mb-3">ゲストログイン</h6>
       <div class="offset-md-1">
-        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-light border" %>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn" %>
       </div>
     </div>
   </div>
