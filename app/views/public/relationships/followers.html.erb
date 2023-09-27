@@ -3,7 +3,9 @@
     <div class="col-lg-10 mx-auto">
       <h4>【フォロワー一覧】</h4>
       <%= render "follow_lists", users: @users %>
-      <%= paginate @users %>
+      <div class="d-flex justify-content-center mt-3 custom-pagination">
+        <%= paginate @users %>
+      </div>
     </div>
   </div>
 </div>

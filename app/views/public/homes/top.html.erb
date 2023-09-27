@@ -16,7 +16,9 @@
           <%= render "public/posts/post", post: post %>
           <div class="border my-3"></div>
         <% end %>
-        <%= paginate @posts %>
+        <div class="d-flex justify-content-center mt-3 custom-pagination">
+          <%= paginate @posts %>
+        </div>
       <% end %>
     </div>
   </div>

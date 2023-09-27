@@ -67,10 +67,3 @@ Rails.application.routes.draw do
 
 
 end
-
-
-# ーやることー
-# ・レイアウト
-# ・テスト仕様書
-# ・aboutの背景画像
-# ・カードのデザイン

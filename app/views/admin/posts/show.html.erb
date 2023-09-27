@@ -5,7 +5,9 @@
       <div class="border my-3"></div>
       <h4>【コメント】</h4>
       <%= render "public/post_comments/admin_post_comments", post_comments: @post_comments %>
-      <%= paginate @post_comments %>
+      <div class="d-flex justify-content-center mt-3 custom-pagination">
+        <%= paginate @post_comments %>
+      </div>
     </div>
   </div>
 </div>
