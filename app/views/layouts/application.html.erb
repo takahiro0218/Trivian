@@ -18,23 +18,23 @@
           <h1><%= link_to "Trivian", root_path, class: "link" %></h1>
           <ul class="navbar-nav ml-auto p-3">
             <% if user_signed_in? %>
-              <li class="nav-item"><%= link_to "About", about_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "マイページ", user_path(current_user.id), class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "ホーム", root_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "検索", search_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "ランキング", ranking_posts_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "ヘぇ〜一覧", post_likes_user_path(current_user.id), class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "投稿する", new_post_path, class: "btn nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "About", about_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "マイページ", user_path(current_user.id), class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "ホーム", root_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "検索", search_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "ランキング", ranking_posts_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "ヘぇ〜一覧", post_likes_user_path(current_user.id), class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "投稿する", new_post_path, class: "btn btn-default nav-link ml-2" %></li>
             <% elsif admin_signed_in? %>
-              <li class="nav-item"><%= link_to "ジャンル一覧", admin_categories_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "ユーザー一覧", admin_root_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "検索", search_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "ジャンル一覧", admin_categories_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "ユーザー一覧", admin_root_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "検索", search_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default nav-link ml-2" %></li>
             <% else %>
-              <li class="nav-item"><%= link_to "About", about_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "btn nav-link ml-2" %></li>
-              <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "btn nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "About", about_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-default nav-link ml-2" %></li>
+              <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-default nav-link ml-2" %></li>
             <% end %>
           </ul>
         </div>

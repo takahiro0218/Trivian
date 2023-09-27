@@ -7,13 +7,13 @@
           （全<%= @category_posts.total_count %>件中<%= @category_posts.offset_value + 1 %>〜<%= @category_posts.offset_value + @category_posts.length %>件を表示しています。）
         <% end %>
         <% @category_posts.each do |post| %>
-          <%= render "public/posts/post", post: post %>
+          <%= render "public/posts/admin_post", post: post %>
           <div class="border my-3"></div>
         <% end %>
         <%= paginate @category_posts %>
       <% else %>
         <% @posts.each do |post| %>
-          <%= render "public/posts/post", post: post %>
+          <%= render "public/posts/admin_post", post: post %>
           <div class="border my-3"></div>
         <% end %>
         <%= paginate @posts %>

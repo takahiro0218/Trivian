@@ -18,6 +18,7 @@ class Public::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     PostComment.find(params[:id]).destroy
     redirect_to request.referer
+    flash[:notice] = "コメントを削除しました"
   end
 
 
