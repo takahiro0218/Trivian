@@ -22,53 +22,53 @@ User.create!(
   email: 'ashitaka1250@gmail.com',
   password: '111111'
   )
-  
+
 Category.create!(
   name: '歴史'
   )
-  
+
 Category.create!(
   name: '家事'
   )
-  
+
 Category.create!(
   name: '動物'
   )
-  
+
 Category.create!(
   name: '洗濯'
   )
-  
+
 Category.create!(
   name: '料理'
   )
-  
+
 Category.create!(
   name: 'DIY'
   )
-  
+
 Category.create!(
   name: '釣り'
   )
-  
+
 Category.create!(
   name: 'スキー'
   )
-  
+
 Category.create!(
   name: 'その他'
   )
-  
-Post1 = Post.create!(
+
+post1 = Post.create!(
   text: 'ドリンクバーの元をとるには何杯くらい飲まないといけないかご存じでしょうか？正解は40杯でした！！当たった人はすごい',
   user_id: '1',
   category_id: '9'
   )
-Post1.post_image.attach(io: File.open(Rails.root.join('app/assets/images/vegetable-juices-1725835_1280.jpg')), filename: 'vegetable-juices-1725835_1280.jpg')
+post1.post_image.attach(io: File.open(Rails.root.join('app/assets/images/vegetable-juices-1725835_1280.jpg')), filename: 'vegetable-juices-1725835_1280.jpg')
 
-Post2 = Post.create!(
+post2 = Post.create!(
   text: 'ハムスターが1日に走る距離はなんと10kmだそうです！人間の私の方が負けてる...笑',
   user_id: '2',
   category_id: '3'
   )
-Post.post_image.attach(io: File.open(Rails.root.join('app/assets/images/golden-hamster.jpg')), filename: 'golden-hamster.jpg')
+post2.post_image.attach(io: File.open(Rails.root.join('app/assets/images/golden-hamster.jpg')), filename: 'golden-hamster.jpg')
