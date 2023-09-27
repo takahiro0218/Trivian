@@ -9,7 +9,7 @@
           </span>
         </td>
         <td>
-          <% if admin_signed_in? %>
+          <% if admin_signed_in? && current_page?(admin_post_path(post.id)) %>
             <%= link_to "投稿を削除する", admin_post_path(post.id), method: :delete, data: { confirm: "本当に投稿を削除しますか？" }, class: "btn btn-delete" %>
           <% end %>
         </td>

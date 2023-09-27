@@ -12,9 +12,14 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comments = @post.post_comments.page(params[:page])
   end
-  
+
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "投稿を削除しました"
+      redirect_to request.referer
+    end
   end
-    
-  
+
+
 end
