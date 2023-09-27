@@ -150,6 +150,8 @@
         <div>該当する投稿はありません。</div>
       <% end %>
     <% end %>
-    <%= paginate @results %>
+    <div class="d-flex justify-content-center mt-3 custom-pagination">
+      <%= paginate @results %>
+    </div>
   </div>
 </div>

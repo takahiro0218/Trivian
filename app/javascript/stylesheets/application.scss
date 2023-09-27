@@ -80,3 +80,26 @@ body {
 .bg-third {
   background-color: #BA6E40;
 }
+
+.custom-pagination .page-item.active .page-link {
+  background-color: #977C46; /* 好きな色 */
+  border-color: #977C46;
+  color: #ffffff; /* アクティブなページのテキスト色 */
+}
+
+.custom-pagination .page-item:not(.active) .page-link {
+  background-color: #ffffff; /* 非アクティブなページの背景色 */
+  border-color: #ffffff;
+  color: #977C46; /* 非アクティブなページのテキスト色 */
+}
+
+.custom-pagination .page-item:not(.active) .page-link:hover {
+  background-color: #977C46;
+  border-color: #977C46;
+  color: #ffffff;
+}
+
+.flash {
+  color: 000000;
+  background-color: rgba(182, 167, 159, 0.25);
+}
