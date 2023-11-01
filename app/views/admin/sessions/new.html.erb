@@ -1,21 +1,23 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 mx-auto">
-      <h5 class="bg-light col-3 mb-3">管理者ログイン</h5>
+      <h5 class="heading col-3 mt-5 mb-2">管理者ログイン</h5>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :password, "パスワード" %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上" %>
-        </div>
-
-        <div class="actions mt-3">
-          <%= f.submit "ログイン", class: "btn btn-secondary" %>
-        </div>
+        <table class="table table-borderless">
+          <tr>
+            <td><%= f.label :email, "メールアドレス" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :password, "パスワード" %></td>
+            <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上" %></td>
+          </tr>
+          <tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "ログイン", class: "btn btn-default" %></td>
+          </tr>
+        </table>
       <% end %>
-      
+
       <%= render "admin/shared/links" %>

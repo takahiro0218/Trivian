@@ -2,16 +2,23 @@
   <div class="row">
     <div class="col-lg-10 mx-auto">
       <% if params[:category_id] %>
-        "<%= @category.name %>"の検索結果（<%= @category_posts.count %> 件）
+        "<%= @category.name %>"の検索結果
+        <% if @category_posts.exists? %>
+          （全<%= @category_posts.total_count %>件中<%= @category_posts.offset_value + 1 %>〜<%= @category_posts.offset_value + @category_posts.length %>件を表示しています。）
+        <% end %>
         <% @category_posts.each do |post| %>
           <%= render "public/posts/post", post: post %>
           <div class="border my-3"></div>
         <% end %>
+        <%= paginate @category_posts %>
       <% else %>
         <% @posts.each do |post| %>
           <%= render "public/posts/post", post: post %>
           <div class="border my-3"></div>
         <% end %>
+        <div class="d-flex justify-content-center mt-3 custom-pagination">
+          <%= paginate @posts %>
+        </div>
       <% end %>
     </div>
   </div>

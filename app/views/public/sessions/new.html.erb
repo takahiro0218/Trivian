@@ -1,35 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 mx-auto">
-      <h5 class="bg-light col-2 mb-2">ログイン</h5>
-      <h6 class="bg-light col-5 mb-3">ユーザー登録済みの方はこちらからログイン</h6>
-      
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      
-        <div class="field">
-          <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %>
-        </div>
-      
-        <div class="field">
-          <%= f.label :password, "パスワード" %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上" %>
-        </div>
-      
-        <div class="actions mt-3">
-          <%= f.submit "ログイン", class: "btn btn-secondary" %>
-        </div>
-        
-      <% end %>
-      
-      <h6 class="bg-light col-4 my-3">ユーザー登録がお済みでない方</h6>
+      <h5 class="heading col-2 mt-5 mb-2">ログイン</h5>
+      <h6 class="heading col-5 my-3">ユーザー登録済みの方はこちらからログイン</h6>
+      <div class="offset-md-1">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <table class="table table-borderless">
+            <tr>
+              <td><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "xxx@email.com" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :password, "パスワード" %></td>
+              <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "半角英数6文字以上" %></td>
+            </tr>
+            <tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "ログイン", class: "btn btn-default" %></td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+      <h6 class="heading col-4 mt-5 mb-3">ユーザー登録がお済みでない方</h6>
       <div class="offset-md-1">
         <%= render "public/shared/links" %>から新規登録してください。
       </div>
-      
-      <h6 class="bg-light col-4 my-3">ゲストログイン</h6>
-      <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-light border" %>
-      
+
+      <h6 class="heading col-2 mt-5 mb-3">ゲストログイン</h6>
+      <div class="offset-md-1">
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-default" %>
+      </div>
     </div>
   </div>
 </div>

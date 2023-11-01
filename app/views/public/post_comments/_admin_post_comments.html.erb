@@ -1,5 +1,5 @@
 <% post_comments.each do |post_comment| %>
-  <%= link_to user_path(post_comment.user.id), class: "link" do %>
+  <%= link_to admin_user_path(post_comment.user.id), class: "link" do %>
     <table class="table table-borderless">
       <tr>
         <td>
@@ -13,9 +13,7 @@
         </td>
         <td>
           <span class="mx-5">
-            <% if post_comment.user == current_user %>
-              <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: "btn btn-delete" %>
-            <% end %>
+            <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, data: { confirm: "本当にコメントを削除しますか？" }, class: "btn btn-delete" %>
           </span>
         </td>
       </tr>

@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 mx-auto">
-      <%= render "public/posts/post", post: @post %>
+      <%= render "public/posts/admin_post", post: @post %>
       <div class="border my-3"></div>
       <h4>【コメント】</h4>
-      <%= render "public/post_comments/post_comments", post: @post %>
+      <%= render "public/post_comments/admin_post_comments", post_comments: @post_comments %>
+      <div class="d-flex justify-content-center mt-3 custom-pagination">
+        <%= paginate @post_comments %>
+      </div>
     </div>
   </div>
 </div>

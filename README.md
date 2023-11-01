@@ -23,8 +23,15 @@ X(旧Twitter)やInstagramなどさまざまなSNSが現代にはありますが�
 - 自分の知識を共有して共感や賞賛を得たい時
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
--
+- 実装機能リスト（https://docs.google.com/spreadsheets/d/1WTUO019yYfxz73tbJUke_3rgeLNvIrha0VTkmalRy8k/edit#gid=1898975908）
+- WBSシート（https://docs.google.com/spreadsheets/d/1reggBMUubHIl3pVgxk02ZnYfSZ0ks41B3kCwPwQzPak/edit#gid=1773513600）
+- 画面遷移図（ユーザ側）（https://app.diagrams.net/#G1_cGaPLao6JnXICwIAYLHeetPZoIt8hVd）
+- 画面遷移図（管理者側）（https://app.diagrams.net/#G1GbO40DdVyOhhae2xtVO2BhCw2_sdoc5-）
+- ワイヤーフレーム（ユーザ側）（https://app.diagrams.net/#G16ILo_FJTaZ52e3RokJ0zPkiClaWJ14yj#%7B%22pageId%22%3A%22y2fbnAQ2kn7i484rghsu%22%7D）
+- ワイヤーフレーム（管理者側）（https://app.diagrams.net/#G1lXYDBZbQyGvhB6PGI-NnT-stTSsdvq02）
+- ER図（https://app.diagrams.net/#G1pYeQHNeAkZJOgi3J_uXxx4zpYfxTSR66）
+- テーブル定義書（https://docs.google.com/spreadsheets/d/1zf4-JB_8N7bqGYyjgy5UyIM3Qbx69BtCIM_JTHETb4k/edit#gid=598087497）
+- アプリケーション詳細設計書（https://docs.google.com/spreadsheets/d/1QbvYyWRdqyxT0RSeLv0O6c4z717DM5hBGYL9pRtArUQ/edit#gid=0）
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -34,7 +41,5 @@ X(旧Twitter)やInstagramなどさまざまなSNSが現代にはありますが�
 - IDE：Cloud9
 ​
 ## 使用素材
-（使用予定）
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- Pixabay（https://pixabay.com/ja/）
+- ソコスト（https://soco-st.com/）

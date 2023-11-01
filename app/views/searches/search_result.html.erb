@@ -1,97 +1,125 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-10 mx-auto">
-       "<%= @word %>"の検索結果（<%= @results.count %> 件）
-      <% if @results.present? %>
-        <% if @range == "ユーザー名" %>
-          <% @results.each do |result| %>
-            <table class="table table-borderless">
-              <tr>
-                <td>
-                  <% if user_signed_in? %>
-                    <%= link_to user_path(result.id) do %>
+  <div>
+    "<%= @word %>"の検索結果
+    <% if @results.exists? %>
+      （全<%= @results.total_count %>件中<%= @results.offset_value + 1 %>〜<%= @results.offset_value + @results.length %>件を表示しています。）
+    <% end %>
+  </div>
+  <div class="col-lg-12 mx-auto">
+    <% if @results.present? %>
+      <% if @range == "ユーザー名" %>
+        <% @results.each do |result| %>
+          <% if user_signed_in? %>
+            <%= link_to user_path(result.id), class: "link" do %>
+              <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th style="width: 40%"></th>
+                    <th style="width: 60%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
                       <%= image_tag result.get_user_image(100,100) %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to admin_user_path(result.id) do %>
-                      <%= image_tag result.get_user_image(100,100) %>
-                    <% end %>
-                  <% end %>
-                </td>
-                <td>
-                  <% if user_signed_in? %>
-                    <%= link_to user_path(result.id) do %>
-                      <%= result.name %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to admin_user_path(result.id) do %>
-                      <%= result.name %>
-                    <% end %>
-                  <% end %>
-                </td>
-                <td>
-                  <% if user_signed_in? %>
-                    <%= link_to user_path(result.id) do %>
+                      <span class="mx-5">
+                        <%= result.name %>
+                      </span>
+                    </td>
+                    <td>
                       <% if result.profile.present? %>
                         <%= result.profile %>
                       <% else %>
-                        <p>プロフィールはまだありません。</p>
+                        プロフィールはまだありません。
                       <% end %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to admin_user_path(result.id) do %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            <% end %>
+            <div class="border my-3"></div>
+          <% else %>
+            <%= link_to admin_user_path(result.id), class: "link" do %>
+              <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th style="width: 40%"></th>
+                    <th style="width: 60%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= image_tag result.get_user_image(100,100) %>
+                      <span class="mx-5">
+                        <%= result.name %>
+                      </span>
+                    </td>
+                    <td>
                       <% if result.profile.present? %>
                         <%= result.profile %>
                       <% else %>
-                        <p>プロフィールはまだありません。</p>
+                        プロフィールはまだありません。
                       <% end %>
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
-            </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            <% end %>
             <div class="border my-3"></div>
           <% end %>
-        <% else %>
+        <% end %>
+      <% else %>
+        <div class="row">
           <% @results.each do |result| %>
-            <div class="col-sm-3 mt-3 px-1">
+            <div class="col-3 mt-3 px-1">
               <% if user_signed_in? %>
-                <%= link_to post_path(result.id), class: "card h-100 w-70" do %>
-                  <div class="card-body">
-                    <table class="table table-borderless">
-                      <tr>
-                        <td><%= image_tag result.user.get_user_image(100,100), size: "100x100", class: "rounded border" %></td>
-                        <td><%= result.user.name %></td>
-                      </tr>
-                    </table>
-                    <div class="card-text">
-                      <h6 class="border p-md-1">
-                        <%= truncate(result.text, length: 32) %>
-                      </h6>
+                <div class="card-deck">
+                  <%= link_to post_path(result.id), class: "card h-100 w-70 link" do %>
+                    <div class="card-body">
+                      <table class="table table-borderless">
+                        <tr>
+                          <td>
+                            <%= image_tag result.get_post_image(100,100), size: "100x100", class: "rounded border" %>
+                            <span class="ml-5">
+                              <%= result.user.name %>
+                            </span>
+                          </td>
+                        </tr>
+                      </table>
+                      <div class="card-text">
+                        <h6 class="border p-md-1">
+                          <%= truncate(result.text, length: 32) %>
+                        </h6>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-footer">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">ジャンル:<%= result.category.name %></li>
-                      <li class="list-group-item">
-                        <% if result.post_liked_by?(current_user) %>
-                          <span class="btn btn-sm btn-light rounded-pill border">へぇ〜済</span>
-                        <% else %>
-                          <span class="btn btn-sm btn-light rounded-pill border">へぇ〜</span>
-                        <% end %>
-                        :<%= result.post_likes.count %>件
-                      </li>
-                      <li class="list-group-item">コメント:<%= result.post_comments.count %>件</li>
-                    </ul>
-                  </div>
-                <% end %>
+                    <div class="card-footer">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ジャンル:<%= result.category.name %></li>
+                        <li class="list-group-item">
+                          <% if result.post_liked_by?(current_user) %>
+                            <span class="btn btn-sm btn-light rounded-pill border">へぇ〜済</span>
+                          <% else %>
+                            <span class="btn btn-sm btn-light rounded-pill border">へぇ〜</span>
+                          <% end %>
+                          :<%= result.post_likes.count %>件
+                        </li>
+                        <li class="list-group-item">コメント:<%= result.post_comments.count %>件</li>
+                      </ul>
+                    </div>
+                  <% end %>
+                </div>
               <% else %>
-                <%= link_to admin_post_path(result.id), class: "card h-100 w-70" do %>
+                <%= link_to admin_post_path(result.id), class: "card h-100 w-70 link" do %>
                   <div class="card-body">
                     <table class="table table-borderless">
                       <tr>
-                        <td><%= image_tag result.user.get_user_image(100,100), size: "100x100", class: "rounded border" %></td>
-                        <td><%= result.user.name %></td>
+                        <td>
+                          <%= image_tag result.get_post_image(100,100), size: "100x100", class: "rounded border" %>
+                          <span class="ml-5">
+                            <%= result.user.name %>
+                          </span>
+                        </td>
                       </tr>
                     </table>
                     <div class="card-text">
@@ -113,14 +141,17 @@
               <% end %>
             </div>
           <% end %>
-        <% end %>
-      <% else %>
-        <% if @range == "ユーザー名" %>
-          <div>該当するユーザーはいません。</div>
-        <% else %>
-          <div>該当する投稿はありません。</div>
-        <% end %>
+        </div>
       <% end %>
+    <% else %>
+      <% if @range == "ユーザー名" %>
+        <div>該当するユーザーはいません。</div>
+      <% else %>
+        <div>該当する投稿はありません。</div>
+      <% end %>
+    <% end %>
+    <div class="d-flex justify-content-center mt-3 custom-pagination">
+      <%= paginate @results %>
     </div>
   </div>
 </div>

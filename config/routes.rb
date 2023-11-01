@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   # 検索用ルーティング
   get "search" => "searches#search"
   get "search_result" => "searches#search_result"
-  
+
   # ゲストログイン用のルーティング
   devise_scope :user do
     post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
@@ -68,6 +68,3 @@ Rails.application.routes.draw do
 
 end
 
-# ー明日やることー
-# ・テストデプロイ
-# ・キャリアレポート再提出

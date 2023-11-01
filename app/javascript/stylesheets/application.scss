@@ -1,2 +1,105 @@
 // bootstrapの記述
 @use '~bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Swash&display=swap');
+
+body {
+  background-color: #f6efe5;
+  font-family: 'Cherry Swash', cursive;
+}
+
+.heading {
+  background-color: rgba(182, 167, 159, 0.25);
+}
+
+.link {
+  color: #000000;
+}
+
+.link:hover {
+  color: #AAAAAA;
+  text-decoration: none;
+}
+
+.btn-default {
+  text-color: #000000;
+  background-color: rgb(207, 219, 218);
+}
+
+.btn-default:hover {
+  text-color: #000000;
+  background-color: rgba(207, 219, 218, 0.6);
+}
+
+.about {
+  background-image: url("/assets/images/12230_color.jpg");
+  height: 800px;
+  background-size:cover;
+}
+
+
+.post {
+  border-radius: 40px;
+  background-color: rgb(182, 167, 159, 0.3);
+  padding: 10px 30px;
+}
+
+.btn-delete {
+   background-color: rgba(166, 62, 60, 0.9);
+   color: #ffffff;
+}
+
+.btn-delete:hover {
+  background-color: rgba(166, 62, 60, 0.5);
+  color: #ffffff;
+}
+
+.text {
+  width: 700px;
+  height: 100px;
+}
+
+.btn-logout {
+  color: #ffffff;
+  background-color: rgba(74, 46, 15, 0.7);
+}
+
+.btn-logout:hover {
+  color: #ffffff;
+  background-color: rgba(74, 46, 15, 0.5);
+}
+
+.bg-first {
+  background-color: #E3AB00;
+}
+
+.bg-second {
+  background-color: #C9CACA;
+}
+
+.bg-third {
+  background-color: #BA6E40;
+}
+
+.custom-pagination .page-item.active .page-link {
+  background-color: #977C46; /* 好きな色 */
+  border-color: #977C46;
+  color: #ffffff; /* アクティブなページのテキスト色 */
+}
+
+.custom-pagination .page-item:not(.active) .page-link {
+  background-color: #ffffff; /* 非アクティブなページの背景色 */
+  border-color: #ffffff;
+  color: #977C46; /* 非アクティブなページのテキスト色 */
+}
+
+.custom-pagination .page-item:not(.active) .page-link:hover {
+  background-color: #977C46;
+  border-color: #977C46;
+  color: #ffffff;
+}
+
+.flash {
+  color: 000000;
+  background-color: rgba(182, 167, 159, 0.25);
+}

@@ -1,5 +1,5 @@
 <div class="post">
-  <%= link_to user_path(post.user.id), class: "link" do %>
+  <%= link_to admin_user_path(post.user.id), class: "link" do %>
     <table class="table table-borderless">
       <tr>
         <td>
@@ -8,10 +8,15 @@
             <%= post.user.name %>
           </span>
         </td>
+        <td>
+          <% if admin_signed_in? && current_page?(admin_post_path(post.id)) %>
+            <%= link_to "投稿を削除する", admin_post_path(post.id), method: :delete, data: { confirm: "本当に投稿を削除しますか？" }, class: "btn btn-delete" %>
+          <% end %>
+        </td>
       </tr>
     </table>
   <% end %>
-  <%= link_to post_path(post.id), class: "link" do %>
+  <%= link_to admin_post_path(post.id), class: "link" do %>
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -31,7 +36,7 @@
     <div class="d-inline-flex">
       <div class="mt-2">ジャンル:<%= post.category.name %></div>
       <div class="mt-1 ml-2">
-        <%= render "public/post_likes/post_like_btn", post: post %>
+        <span class="btn btn-sm btn-light rounded-pill border">へぇ〜</span>
         :<%= post.post_likes.count %>件
       </div>
       <div class="mt-2 ml-2">コメント:<%= post.post_comments.count %>件</div>

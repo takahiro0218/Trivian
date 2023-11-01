@@ -4,19 +4,19 @@
       <h4>【ランキング】</h4>
       <% @posts.each.with_index(1) do |post, i| %>
         <% if i == 1 %>
-          <h4 class=" col-1 border rounded text-center bg-warning">
+          <h4 class=" col-2 border rounded text-center bg-first">
             <%= i %>位
           </h4>
         <% elsif i == 2 %>
-          <h4 class=" col-1 border rounded text-center bg-secondary">
+          <h4 class=" col-2 border rounded text-center bg-second">
             <%= i %>位
           </h4>
         <% elsif i == 3 %>
-          <h4 class=" col-1 border rounded text-center bg-success">
+          <h4 class=" col-2 border rounded text-center bg-third">
             <%= i %>位
           </h4>
         <% else %>
-          <h4 class=" col-1 border rounded text-center bg-light">
+          <h4 class=" col-2 border rounded text-center bg-light">
             <%= i %>位
           </h4>
         <% end %>

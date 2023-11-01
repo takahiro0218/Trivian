@@ -1,28 +1,32 @@
 <% if users.exists? %>
   <% users.each do |user| %>
-    <table class="table table-borderless">
-      <tr>
-        <td>
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_user_image(100,100) %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to user_path(user.id) do %>
-            <%= user.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to user_path(user.id) do %>
-            <% if user.profile.present? %>
-              <%= user.profile %>
-            <% else %>
-              <p>プロフィールはまだありません。</p>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
+    <%= link_to user_path(user.id), class: "link" do %>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th style="width: 40%"></th>
+            <th style="width: 60%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= image_tag user.get_user_image(100,100) %>
+              <span class="mx-5">
+                <%= user.name %>
+              </span>
+            </td>
+            <td>
+              <% if user.profile.present? %>
+                <%= user.profile %>
+              <% else %>
+                プロフィールはまだありません。
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
     <div class="border my-3"></div>
   <% end %>
 <% else %>

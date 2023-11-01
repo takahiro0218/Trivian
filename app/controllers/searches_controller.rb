@@ -8,9 +8,9 @@ class SearchesController < ApplicationController
     @word = params[:word]
     @range = params[:range]
     if @range == "ユーザー名"
-      @results = User.partial_search(@word)
+      @results = User.partial_search(@word).page(params[:page]).per(20)
     else
-      @results = Post.partial_search(@word)
+      @results = Post.partial_search(@word).page(params[:page]).per(8)
     end
   end
   
