@@ -1,4 +1,7 @@
 class Admin::PostsController < ApplicationController
+  
+  before_action :authenticate_admin!
+  
   def index
     if params[:category_id]
     	@category = Category.find(params[:category_id])

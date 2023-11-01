@@ -1,10 +1,10 @@
-<div class="post">
+<div class="post shadow">
   <%= link_to user_path(post.user.id), class: "link" do %>
     <table class="table table-borderless">
       <tr>
         <td>
           <%= image_tag post.user.get_user_image(100,100) %>
-          <span class="ml-5">
+          <span class="d-inline-block text-truncate mx-5">
             <%= post.user.name %>
           </span>
         </td>
@@ -21,7 +21,7 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= image_tag post.get_post_image(300,300), size: "330x250" %></td>
+          <td><%= image_tag post.get_post_image(300,300), size: "330x250", class: "img-fluid" %></td>
           <td class="border border-secondary"><%= post.text %></td>
         </tr>
       </tbody>

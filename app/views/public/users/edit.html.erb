@@ -12,11 +12,13 @@
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td class="d-md-flex justify-content-md-start">
                 <%= image_tag current_user.get_user_image(100,100) %>
-                <span class="ml-5">
-                  <%= @user.name %>
-                </span>
+                <div class="mx-2 mx-md-5">
+                  <span class="d-inline-block text-truncate">
+                    <%= @user.name %>
+                  </span>
+                </div>
               </td>
               <td>プロフィール<%= f.text_field :profile, class: "form-control", placeholder: "プロフィールはまだありません" %></td>
             </tr>

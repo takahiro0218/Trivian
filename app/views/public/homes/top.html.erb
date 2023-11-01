@@ -5,6 +5,8 @@
         "<%= @category.name %>"の検索結果
         <% if @category_posts.exists? %>
           （全<%= @category_posts.total_count %>件中<%= @category_posts.offset_value + 1 %>〜<%= @category_posts.offset_value + @category_posts.length %>件を表示しています。）
+        <% else %>
+          <div>該当する投稿はありません。</div>
         <% end %>
         <% @category_posts.each do |post| %>
           <%= render "public/posts/post", post: post %>

@@ -15,12 +15,12 @@
               <span class="mx-5">
                 <%= image_tag @user.get_user_image(100,100) %>
               </span>
-              <span class="mx-5">
+              <span class="d-inline-block text-truncate mx-5">
                 <%= @user.name %>
               </span>
             </td>
             <td class="border border-secondary">
-              <span class="mx-5">
+              <span class="mx-2 mx-md-5 text-left d-inline-block">
                 <% if @user.profile.present? %>
                   <%= @user.profile %>
                 <% else %>
