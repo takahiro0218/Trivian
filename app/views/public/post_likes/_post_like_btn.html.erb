@@ -1,10 +1,10 @@
 <% if post.post_liked_by?(current_user) %>
-    <%= link_to post_post_likes_path(post), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+    <%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
       <span class="btn btn-sm btn-light rounded-pill border">へぇ〜済</span>
     <% end %>
     :<%= post.post_likes.count %>件
   <% else %>
-    <%= link_to post_post_likes_path(post), method: :post, remote: true, data: {"turbolinks" => false} do %>
+    <%= link_to post_post_likes_path(post), method: :post, remote: true do %>
       <span class="btn btn-sm btn-light rounded-pill border">へぇ〜</span>
     <% end %>
     :<%= post.post_likes.count %>件
