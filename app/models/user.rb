@@ -43,12 +43,16 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   # 部分一致検索の条件
   def self.partial_search(word)
-    where("name LIKE?", '%'+word+'%')
+    if word.present?
+      where("name LIKE ?", '%' + word + '%')
+    else
+      none
+    end
   end
-  
+
   # ゲストログイン
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
@@ -57,5 +61,5 @@ class User < ApplicationRecord
     end
   end
 
-  
+
 end

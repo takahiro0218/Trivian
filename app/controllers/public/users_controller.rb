@@ -9,6 +9,9 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def check
@@ -16,16 +19,21 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @user.valid_password?(params[:user][:current_password])
-      if @user.update(user_params)
-        redirect_to user_path(@user.id)
-        flash[:notice] = "アカウント情報を変更しました"
+    @user = User.find(params[:id])
+    if @user == current_user
+      if @user.valid_password?(params[:user][:current_password])
+        if @user.update(user_params)
+          redirect_to user_path(@user.id)
+          flash[:notice] = "アカウント情報を変更しました"
+        else
+          render :edit
+        end
       else
+        flash[:notice] = "パスワードが違います"
         render :edit
       end
     else
-      flash[:notice] = "パスワードが違います"
+      flash[:notice] = "現在ログイン中のアカウントではないため変更はできません"
       render :edit
     end
   end

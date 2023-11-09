@@ -11,27 +11,25 @@
         <% @results.each do |result| %>
           <% if user_signed_in? %>
             <%= link_to user_path(result.id), class: "link" do %>
-              <table class="table table-borderless">
-                <thead>
-                  <tr>
-                    <th style="width: 40%"></th>
-                    <th style="width: 60%"></th>
-                  </tr>
-                </thead>
+              <table class="table table-borderless post">
                 <tbody>
                   <tr>
                     <td>
-                      <%= image_tag result.get_user_image(100,100) %>
-                      <span class="mx-5">
+                      <span class="mx-4 my-5">
+                        <%= image_tag result.get_user_image(80,80) %>
+                      </span>
+                      <span class="d-inline-block text-truncate mx-5">
                         <%= result.name %>
                       </span>
                     </td>
                     <td>
-                      <% if result.profile.present? %>
-                        <%= result.profile %>
-                      <% else %>
-                        プロフィールはまだありません。
-                      <% end %>
+                      <span class="mx-2 mx-md-5 text-left d-inline-block">
+                        <% if result.profile.present? %>
+                          <%= result.profile %>
+                        <% else %>
+                          プロフィールはまだありません。
+                        <% end %>
+                      </span>
                     </td>
                   </tr>
                 </tbody>
@@ -50,10 +48,11 @@
                 <tbody>
                   <tr>
                     <td>
-                      <%= image_tag result.get_user_image(100,100) %>
-                      <span class="mx-5">
+                      <%= image_tag result.get_user_image(80,80) %>
+                      <span class="d-inline-block text-truncate mx-5">
                         <%= result.name %>
                       </span>
+                    </td>
                     </td>
                     <td>
                       <% if result.profile.present? %>
@@ -74,14 +73,14 @@
           <% @results.each do |result| %>
             <div class="col-3 mt-3 px-1">
               <% if user_signed_in? %>
-                <div class="card-deck">
+                <div class="card shadow">
                   <%= link_to post_path(result.id), class: "card h-100 w-70 link" do %>
                     <div class="card-body">
                       <table class="table table-borderless">
                         <tr>
                           <td>
                             <%= image_tag result.get_post_image(100,100), size: "100x100", class: "rounded border" %>
-                            <span class="ml-5">
+                            <span class="d-inline-block text-truncate ml-1">
                               <%= result.user.name %>
                             </span>
                           </td>
@@ -116,7 +115,7 @@
                       <tr>
                         <td>
                           <%= image_tag result.get_post_image(100,100), size: "100x100", class: "rounded border" %>
-                          <span class="ml-5">
+                          <span class="d-inline-block text-truncate ml-1">
                             <%= result.user.name %>
                           </span>
                         </td>

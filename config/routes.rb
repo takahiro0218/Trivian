@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # 顧客用
   # URL /users/sign_in ...
   devise_for :users, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
+    registrations: "users/registrations",
     sessions: 'public/sessions'
   }
 
@@ -65,5 +65,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
   end
 
+#一覧画面以外の部分のいいねの非同期化を確かめてみる
 
 end
+
