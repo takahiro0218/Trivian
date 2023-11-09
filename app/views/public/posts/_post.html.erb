@@ -35,7 +35,9 @@
           <%= render "public/post_likes/post_like_btn", post: post %>
         </div>
       </div>
-      <div class="mt-2 ml-2">コメント:<%= post.post_comments.count %>件</div>
+      <div id="post_comment_count">
+        <div class="mt-2 ml-2">コメント:<%= post.post_comments.count %>件</div>
+      </div>
     </div>
   </div>
 </div>
