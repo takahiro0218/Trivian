@@ -15,7 +15,7 @@
         </td>
         <td>
           <% if post_comment.user == current_user %>
-            <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: "btn btn-delete" %>
+            <%= link_to "削除する", post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, remote: true, class: "btn btn-delete" %>
           <% end %>
         </td>
       </tr>
