@@ -18,6 +18,24 @@
       <% else %>
         <h4 class="text-center mt-5">さあ、雑学を手にしよう！</h4>
       <% end %>
+      
+      <!--追加部分-->
+      <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-interval="5000">
+            <%= image_tag 'top_images/top_cake7.jpg', size: "600x400", class:"d-block w-100 rounded mt-4" %>
+          </div>
+          <div class="carousel-item" data-interval="5000">
+            <%= image_tag 'top_images/top_cake6.jpg', size: "600x400", class:"d-block w-100 rounded mt-4" %>
+          </div>
+          <div class="carousel-caption d-none d-md-block top-message">
+            <p>ようこそ、ながのCAKEへ！<br>このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。
+            </p>
+          </div>
+        </div>
+      </div>
+          
     </div>
   </div>
 </div>
