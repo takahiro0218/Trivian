@@ -7,7 +7,7 @@ class Public::PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = @post.id
     if comment.save
-      # redirect_to request.referer
+      @post.create_notification_post_comment(current_user, comment.id)
       flash[:notice] = "コメントを投稿しました"
     else
       # redirect_to request.referer

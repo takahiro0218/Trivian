@@ -37,6 +37,7 @@ Rails.application.routes.draw do
         resource :post_likes, only: [:create, :destroy]
         resources :post_comments, only: [:create, :destroy]
     end
+    resources :notifications, only: [:index]
   end
 
   # 管理者側ルーティング

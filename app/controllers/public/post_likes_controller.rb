@@ -6,7 +6,7 @@ class Public::PostLikesController < ApplicationController
     @post = Post.find(params[:post_id])
     post_like = current_user.post_likes.new(post_id: @post.id)
     post_like.save
-    # redirect_to request.referer
+    @post.create_notification_post_like(current_user)
   end
 
   def destroy
