@@ -27,7 +27,14 @@
               <li class="nav-item"><%= link_to "投稿する", new_post_path, class: "btn btn-default nav-link ml-2 shadow" %></li>
               <li class="nav-item">
                 <%= link_to notifications_path, class: "btn btn-default nav-link ml-2 shadow" do %>
-                  <i class="fa-regular fa-bell"></i>
+                  <% if unchecked_notifications.any? %>
+                    <span class="fa-stack">
+                      <i class="fa-regular fa-bell fa-stack-2x" style="font-size: 1.5em;"></i>
+                      <i class="fa-solid fa-circle n-circle fa-stack-1x"></i>
+                    </span>
+                  <% else %>
+                    <i class="fa-regular fa-bell" style="font-size: 1.5em;"></i>
+                  <% end %>
                 <% end %>
               </li>
             <% elsif admin_signed_in? %>

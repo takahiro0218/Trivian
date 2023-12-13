@@ -70,7 +70,7 @@ class Post < ApplicationRecord
     def save_notification_post_comment(current_user, post_comment_id, visited_id)
       notification = current_user.active_notifications.new(
         post_id: id,
-        post_comment_id: comment_id,
+        post_comment_id: post_comment_id,
         visited_id: visited_id,
         action: 'post_comment'
         )

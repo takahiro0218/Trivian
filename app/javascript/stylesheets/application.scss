@@ -24,6 +24,7 @@ body {
 .btn-default {
   text-color: #000000;
   background-color: rgb(207, 219, 218);
+  height: 40px;
 }
 
 .btn-default:hover {
@@ -95,4 +96,16 @@ body {
 .flash {
   color: 000000;
   background-color: rgba(182, 167, 159, 0.25);
+}
+
+.fa-stack {
+  vertical-align: middle;
+}
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
+  vertical-align: middle;
 }

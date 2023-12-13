@@ -1,7 +1,7 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div class="col-md-6 mx-auto">
+<div class="col-md-8 mx-auto">
   <div class="form-inline">
     <span>
       <%= link_to user_path(visitor) do %>
@@ -33,7 +33,7 @@
         <% end %>
         にコメントしました
         <p class="text-muted mb-0">
-          <%= Comment.find_by(id: notification.comment_id)&.comment %>
+          <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
         </p>
       <% end %>
     </span>
