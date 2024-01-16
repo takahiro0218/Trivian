@@ -70,3 +70,5 @@ Rails.application.routes.draw do
 end
 
 
+# 次回やること
+# ・通知機能の非同期化
